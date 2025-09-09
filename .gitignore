@@ -82,3 +82,10 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # ignore tsconfig.build.tsbuildinfo
 *.tsbuildinfo
+
+# Ignore generated declaration files
+/dist/**/*.d.ts
+
+# But keep custom ones
+!/types/**/*.d.ts
+!/src/**/*.d.ts
