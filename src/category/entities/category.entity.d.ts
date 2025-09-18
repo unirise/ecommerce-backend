@@ -1,7 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 
-export declare class Category {
+@Entity('category')
+export class Category {
+    @PrimaryGeneratedColumn()
     category_id: number;
+
+    @Column()
     category_name: string;
-    parent_category_id: number;
+    
+    @ManyToOne(() => Category, (category) => category.children, { nullable: true })
+    @JoinColumn({ name: 'parent_category_id' })
+    parent_category: Category;
+
+    @OneToMany(() => Category, (category) => category.parent_category)
+    children: Category[];
+
 }
