@@ -12,6 +12,6 @@ export const appSource = new DataSource({
   password: process.env.DB_PASSWORD, 
   database: process.env.DB_NAME ||'ecommerce_db',
   entities: [Category],
-  migrations: ['src/migrations/*.ts'],
+  migrations: ['src/migrations/*.ts', 'dist/migrations/*.js'],
   synchronize: (process.env.TYPEORM_SYNCHRONIZE === 'true' ) || false
 });
