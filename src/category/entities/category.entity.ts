@@ -2,6 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMan
 
 @Entity('category')
 export class Category {
+    
     @PrimaryGeneratedColumn()
     category_id: number;
 
@@ -14,5 +15,4 @@ export class Category {
 
     @OneToMany(() => Category, (category) => category.parent_category)
     children: Category[];
-
 }

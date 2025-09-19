@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe, HttpCode, HttpStatus, UsePipes } from '@nestjs/common';
 import { PartnerService } from './partner.service';
 import { CreatePartnerDto } from './dto/create-partner.dto';
 import { UpdatePartnerDto } from './dto/update-partner.dto';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiCreatedResponse, ApiBadRequestResponse, ApiOkResponse, ApiNotFoundResponse } from '@nestjs/swagger';
 import { Partner } from './entities/partner.entity';
 
 @ApiTags('partner')
@@ -12,31 +12,43 @@ export class PartnerController {
 
   @Post()
   @ApiOperation({summary: `Create a partner`})
-  @ApiResponse({status: 201, description: 'Partner created', type: Partner})
-  create(@Body(new ValidationPipe({whitelist: true})) createPartnerDto: CreatePartnerDto){
+  @ApiCreatedResponse({type: Partner})
+  @ApiBadRequestResponse()
+  @UsePipes(new ValidationPipe({transform: true}))
+  create(@Body() createPartnerDto: CreatePartnerDto){
     return this.partnerService.create(createPartnerDto);
   }
 
   @Get()
   @ApiOperation({summary: `Get all Partners`})
+  @ApiOkResponse({type: [Partner]})
   findAll(){
     return this.partnerService.findAll();
   }
 
   @Get(':id')
   @ApiOperation({summary: `Get Partner id`})
+  @ApiOkResponse({type: [Partner]})
+  @ApiNotFoundResponse()
   findOne(@Param('id') id: string){
     return this.partnerService.findOne(id);
   }
 
   @Patch(':id')
   @ApiOperation({ summary: `Update partner details` })
+  @ApiOkResponse({type: [Partner]})
+  @ApiBadRequestResponse()
+  @ApiNotFoundResponse()
+  @UsePipes(new ValidationPipe({transform: true}))
   update(@Param('id') id: string, @Body(new ValidationPipe({ whitelist: true })) updatePartnerDto: UpdatePartnerDto) {
     return this.partnerService.update(id, updatePartnerDto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete partner' })
+  @ApiOkResponse({description: `Message deleted successfully`})
+  @ApiNotFoundResponse()
+  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {
     return this.partnerService.remove(id);
   }

@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
-import { Category } from "./category/entities/category.entity";
 import { Partner } from "./partner/entities/partner.entity";
+import { Category } from "./category/entities/category.entity";
 import * as dotenv from 'dotenv';
 import process from "process";
 
