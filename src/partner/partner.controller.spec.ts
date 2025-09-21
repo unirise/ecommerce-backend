@@ -1,6 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PartnerController } from './partner.controller';
 import { PartnerService } from './partner.service';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import
+
+const demo = () =>({
+  create: jest.fn(),
+})
 
 describe('PartnerController', () => {
   let controller: PartnerController;
