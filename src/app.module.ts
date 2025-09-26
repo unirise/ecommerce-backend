@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { CategoryModule } from './category/category.module';
 import { PartnerModule } from './partner/partner.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -15,7 +16,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'ecommerce_db',
       autoLoadEntities: true,
       synchronize: false,
-    }),CategoryModule, PartnerModule],
+    }),CategoryModule, PartnerModule, ProductModule],
   controllers: [AppController],
   providers: [AppService],
 })
