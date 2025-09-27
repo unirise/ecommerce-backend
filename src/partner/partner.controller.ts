@@ -27,8 +27,8 @@ export class PartnerController {
   }
 
   @Get(':id')
-  @ApiOperation({summary: `Get Partner id`})
-  @ApiOkResponse({type: [Partner]})
+  @ApiOperation({summary: `Get Partner by ID`})
+  @ApiOkResponse({type: Partner})
   @ApiNotFoundResponse()
   findOne(@Param('id') id: string){
     return this.partnerService.findOne(id);
@@ -36,11 +36,11 @@ export class PartnerController {
 
   @Patch(':id')
   @ApiOperation({ summary: `Update partner details` })
-  @ApiOkResponse({type: [Partner]})
+  @ApiOkResponse({type: Partner})
   @ApiBadRequestResponse()
   @ApiNotFoundResponse()
   @UsePipes(new ValidationPipe({transform: true}))
-  update(@Param('id') id: string, @Body(new ValidationPipe({ whitelist: true })) updatePartnerDto: UpdatePartnerDto) {
+  update(@Param('id') id: string, @Body()updatePartnerDto: UpdatePartnerDto) {
     return this.partnerService.update(id, updatePartnerDto);
   }
 

@@ -1,4 +1,4 @@
-import { Injectable} from '@nestjs/common';
+import { Injectable, NotFoundException} from '@nestjs/common';
 import { CreatePartnerDto } from './dto/create-partner.dto';
 import { UpdatePartnerDto } from './dto/update-partner.dto';
 import { Repository } from 'typeorm';
@@ -26,7 +26,7 @@ export class PartnerService {
       where: {id}
     });
     if(!partner){
-      throw new Error(`Partner not found`);
+      throw new NotFoundException(`Partner not found`);
     }
     return partner;
   }
@@ -40,7 +40,7 @@ export class PartnerService {
   async remove(id: string): Promise<void>{
     const removePartner = this.partnersRepository.delete(id);
     if((await removePartner).affected === 0){
-      throw new Error(`Partner is not found`);
+      throw new NotFoundException(`Partner is not found`);
     }
   }
   
