@@ -1,102 +1,173 @@
-<<<<<<< HEAD
-# ecommerce-backend
-=======
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# E-commerce Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A NestJS-based backend API for an e-commerce application built with TypeScript, TypeORM, and PostgreSQL.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Quick Start
 
-## Description
+### Prerequisites
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [pnpm](https://pnpm.io/) package manager
+- [PostgreSQL](https://www.postgresql.org/) database
 
-## Project setup
+### Installation
 
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/unirise/ecommerce-backend.git
+   cd ecommerce-backend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Environment Setup**
+   ```bash
+   cp env.template .env
+   ```
+   Edit the `.env` file with your database configuration and other environment variables.
+
+4. **Build the application**
+   ```bash
+   pnpm run build
+   ```
+
+## 🔧 Development
+
+### Running in Development Mode
 ```bash
-$ pnpm install
+pnpm run start:dev
+```
+This will start the application in watch mode, automatically restarting when files change.
+
+### Running in Production Mode
+```bash
+pnpm run build
+pnpm start
 ```
 
-## Compile and run the project
+## 📚 Available Scripts
 
+| Command | Description |
+|---------|-------------|
+| `pnpm run build` | Build the application for production |
+| `pnpm start` | Start the production server |
+| `pnpm run start:dev` | Start development server with hot reload |
+| `pnpm run start:debug` | Start development server in debug mode |
+| `pnpm run lint` | Run ESLint to check code quality |
+| `pnpm run format` | Format code using Prettier |
+| `pnpm run test` | Run unit tests |
+| `pnpm run test:watch` | Run tests in watch mode |
+| `pnpm run test:cov` | Run tests with coverage report |
+| `pnpm run test:e2e` | Run end-to-end tests |
+
+## 🗄️ Database
+
+### Database Setup
+1. Create a PostgreSQL database
+2. Update your `.env` file with database credentials
+3. Run migrations:
+   ```bash
+   pnpm run migration:run
+   ```
+
+### Generate New Migration
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+pnpm run migration:generate
 ```
 
-## Run tests
+## 🔌 API Endpoints
 
-```bash
-# unit tests
-$ pnpm run test
+The application runs on `http://localhost:3000` by default.
 
-# e2e tests
-$ pnpm run test:e2e
+### Available Routes
+- `GET /` - Health check endpoint
+- `GET /categories` - Get all categories
+- More endpoints will be documented as they are implemented
 
-# test coverage
-$ pnpm run test:cov
+## 🏗️ Project Structure
+
+```
+src/
+├── app.controller.ts       # Main app controller
+├── app.module.ts          # Root application module
+├── app.service.ts         # Main app service
+├── main.ts               # Application entry point
+├── typeorm.config.ts     # Database configuration
+└── category/             # Category module
+    ├── category.controller.ts
+    ├── category.service.ts
+    ├── category.module.ts
+    ├── dto/              # Data Transfer Objects
+    └── entities/         # Database entities
 ```
 
-## Deployment
+## 🧪 Testing
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
+### Running Tests
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+# Unit tests
+pnpm run test
+
+# Watch mode
+pnpm run test:watch
+
+# Coverage
+pnpm run test:cov
+
+# E2E tests
+pnpm run test:e2e
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## 🚀 Deployment
 
-## Resources
+1. **Build the application**
+   ```bash
+   pnpm run build
+   ```
 
-Check out a few resources that may come in handy when working with NestJS:
+2. **Set environment variables**
+   Ensure all production environment variables are set.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+3. **Run database migrations**
+   ```bash
+   pnpm run migration:run
+   ```
 
-## Support
+4. **Start the application**
+   ```bash
+   pnpm start
+   ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 🔧 Troubleshooting
 
-## Stay in touch
+### Common Issues
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+1. **Build fails with "dist directory not found"**
+   - Make sure TypeScript compilation is successful
+   - Run `pnpm run build` before `pnpm start`
 
-## License
+2. **Database connection errors**
+   - Verify PostgreSQL is running
+   - Check database credentials in `.env` file
+   - Ensure database exists
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
->>>>>>> 1530317 (commit)
+3. **Port already in use**
+   - Change the PORT in your `.env` file
+   - Or kill the process using the port: `lsof -ti:3000 | xargs kill`
+
+## 📄 License
+
+This project is [UNLICENSED](LICENSE).
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Submit a pull request
+
