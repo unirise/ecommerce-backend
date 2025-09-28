@@ -5,7 +5,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe({whitelist: true, forbidNonWhitelisted: false}))
+  app.useGlobalPipes(new ValidationPipe({whitelist: true, forbidNonWhitelisted: false}));
 
   const configuration = new DocumentBuilder()
   .setTitle(`ecommerce API`)
