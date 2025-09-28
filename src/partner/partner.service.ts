@@ -18,7 +18,7 @@ export class PartnerService {
   }
 
   async findAll(): Promise<Partner[]>{
-  return this.partnersRepository.find()
+  return this.partnersRepository.find();
   }
 
   async findOne(id: string): Promise<Partner>{
