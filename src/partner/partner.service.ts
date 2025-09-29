@@ -18,7 +18,7 @@ export class PartnerService {
   }
 
   async findAll(): Promise<Partner[]>{
-  return this.partnersRepository.find()
+  return this.partnersRepository.find();
   }
 
   async findOne(id: string): Promise<Partner>{
@@ -38,8 +38,8 @@ export class PartnerService {
   }
 
   async remove(id: string): Promise<void>{
-    const removePartner = this.partnersRepository.delete(id);
-    if((await removePartner).affected === 0){
+    const deletePartner = this.partnersRepository.delete(id);
+    if((await deletePartner).affected === 0){
       throw new NotFoundException(`Partner is not found`);
     }
   }
