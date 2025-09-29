@@ -5,6 +5,6 @@ import { CategoryController } from './category.controller';
 @Module({
   controllers: [CategoryController],
   providers: [CategoryService],
-  exports: [CategoryService], // optional, only if other modules need it
+  exports: [CategoryService], 
 })
 export class CategoryModule {}
