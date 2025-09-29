@@ -46,7 +46,7 @@ export class PartnerController {
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete partner' })
-  @ApiOkResponse({description: `Message deleted successfully`})
+  @ApiOkResponse({description: `Partner deleted successfully`})
   @ApiNotFoundResponse()
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {
