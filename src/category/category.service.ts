@@ -1,20 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCategoryDto } from './dto/create-category.dto';
-import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Injectable()
 export class CategoryService {
-  findAll() {
+  findAll() 
+  {
     return ['Category 1', 'Category 2', 'Category 3'];
   }
 
-  create(createCategoryDto: CreateCategoryDto) {
-    // Simulate creation logic
-    return { message: 'Category created', data: createCategoryDto };
+  findById(id: number) 
+  {
+    const categories = ['Category 1', 'Category 2', 'Category 3'];
+    return categories[id - 1] || null;
   }
 
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    // Simulate update logic
-    return { message: `Category ${id} updated`, data: updateCategoryDto };
+  update(id: number, updateCategoryDto: any) 
+  {
+    return { id, ...updateCategoryDto, message: 'Category updated' };
+  }
+
+  remove(id: number)
+  {
+    return { id, message: 'Category deleted' };
   }
 }
