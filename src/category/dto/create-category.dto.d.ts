@@ -1,6 +1,4 @@
-
-export declare class CreateCategoryDto {
-    category_id: number;
+export class CreateCategoryDto {
     category_name: string;
     parent_category_id: number;
 }
