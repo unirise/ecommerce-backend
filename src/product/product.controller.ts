@@ -46,7 +46,7 @@ export class ProductController {
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete product' })
-  @ApiOkResponse({description: `Message deleted successfully`})
+  @ApiOkResponse({description: `Product deleted successfully`})
   @ApiNotFoundResponse()
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {

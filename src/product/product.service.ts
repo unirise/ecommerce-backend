@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Repository } from 'typeorm';
@@ -26,7 +26,7 @@ export class ProductService {
       where: {id}
     });
     if(!product){
-      throw new Error("Product is not found");
+      throw new NotFoundException("Product is not found");
     }
     return product;
   }
@@ -36,7 +36,7 @@ export class ProductService {
     Object.assign(updateProduct, updateProductDto);
 
     if(!updateProduct){
-      throw new Error("Product is not found");
+      throw new NotFoundException("Product is not found");
     }
     return this.productRepository.save(updateProduct);
   }
@@ -44,7 +44,7 @@ export class ProductService {
   async remove(id: string): Promise<Product>{
     const product = await this.findOne(id);
     if(!product){
-      throw new Error("Product is not found");
+      throw new NotFoundException("Product is not found");
     }
     return this.productRepository.remove(product);
   }
