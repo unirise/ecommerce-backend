@@ -39,8 +39,8 @@ export class ProductController {
   @ApiOkResponse({type: Product})
   @ApiBadRequestResponse()
   @ApiNotFoundResponse()
-  @UsePipes(new ValidationPipe({transform: true}))
-  update(@Param('id') id: string, @Body(new ValidationPipe({ whitelist: true })) updateProductDto: UpdateProductDto) {
+  @UsePipes(new ValidationPipe({transform: true, whitelist: true}))
+  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
     return this.productService.update(id, updateProductDto);
   }
 
@@ -50,6 +50,6 @@ export class ProductController {
   @ApiNotFoundResponse()
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {
-    return this.productService.remove(id);
+    this.productService.remove(id);
   }
 }
