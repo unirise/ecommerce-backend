@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CategoryModule } from './category/category.module';
 import { PartnerModule } from './partner/partner.module';
+import { ProductModule } from './product/product.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
@@ -27,6 +28,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     CategoryModule,
     PartnerModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
