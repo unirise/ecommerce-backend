@@ -1,7 +1,10 @@
 import { DataSource } from "typeorm";
+import { Partner } from "./partner/entities/partner.entity";
 import { Category } from "./category/entities/category.entity";
 import * as dotenv from 'dotenv';
 import process from "process";
+import { Product } from "./product/entities/product.entity";
+
 dotenv.config();
 
 export const appSource = new DataSource({
@@ -11,7 +14,7 @@ export const appSource = new DataSource({
   username: process.env.DB_USERNAME || 'postgres', 
   password: process.env.DB_PASSWORD, 
   database: process.env.DB_NAME ||'ecommerce_db',
-  entities: [Category],
+  entities: [Partner, Category, Product],
   migrations: ['src/migrations/*.ts'],
   synchronize: (process.env.TYPEORM_SYNCHRONIZE === 'true' ) || false
 });
